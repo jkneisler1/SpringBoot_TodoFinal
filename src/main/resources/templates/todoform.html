@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo Form Page</title>
+</head>
+<body>
+    <div th:replace="base :: header"></div>
+    <br /><br />
+    <form action="#" th:action="@{/process}" th:object="${todo}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        Title :<input type="text" th:field="*{title}" />
+            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span><br /><br />
+        Content :<textarea rows="3"  th:field="*{content}" />
+            <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span><br /><br />
+        <input type="submit" value="Submit" />
+    </form>
+    <br /><br />
+    <div th:replace="base :: footer"></div>
+</body>
+</html>
